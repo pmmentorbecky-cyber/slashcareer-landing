@@ -562,7 +562,7 @@
       <div class="row"><div class="l"><b>結業 1:1 諮詢 30 分鐘</b><p>30 天結束後，Becky 親自陪你看下一步、1→10 怎麼規劃</p></div><div class="price">NT$ 5,000</div></div>
       <div class="total">
         <div class="tt"><span>方案總價值</span><span class="v">NT$ 79,000</span></div>
-        <div class="deal"><span>首發限量價</span><span class="big">NT$ 18,000<small>48 小時後調漲為 NT$ 20,000</small></span></div>
+        <div class="deal"><span id="deal-label">首發限量價</span><span class="big" id="deal-price">NT$ 18,000<small id="deal-note">48 小時後調漲為 NT$ 20,000</small></span></div>
       </div>
     </div>
     <div class="countdown" id="countdown">
@@ -655,7 +655,7 @@
 <div class="final reveal">
   <span class="eyebrow">最後一件事</span>
   <h2>你害怕的，<br>是十年後還在原地的自己嗎？</h2>
-  <div class="urg"><span>7/1 開課</span>·<span>首發價 NT$ 18,000</span>·<span>48 小時後調漲為 NT$ 20,000</span></div>
+  <div class="urg"><span>7/1 開課</span>·<span id="urg-price">首發價 NT$ 18,000</span>·<span id="urg-note">48 小時後調漲為 NT$ 20,000</span></div>
   <div><a href="https://api.payuni.com.tw/api/uop/receive_info/2/1/U04694583/dHjq6tqLRr7dGTrKSaCY6" class="btn btn-gold">立即卡位，搶首發名額</a></div>
   <p class="micro">依報名順序優先 · 額滿即關閉</p>
 </div>
@@ -695,14 +695,14 @@
 
   // ⏰ 倒數計時器：把下面這行改成你實際的漲價截止時間（台灣時間）
   (function(){
-    const DEADLINE=new Date("2026-06-25T22:00:00+08:00").getTime();
+    const DEADLINE=new Date("2026-06-26T00:00:00+08:00").getTime();
     const h=document.getElementById('cd-h'),m=document.getElementById('cd-m'),s=document.getElementById('cd-s'),box=document.getElementById('countdown');
     if(!box) return;
     const pad=n=>String(n).padStart(2,'0');
     let t;
     function tick(){
       let d=DEADLINE-Date.now();
-      if(d<=0){h.textContent='00';m.textContent='00';s.textContent='00';box.querySelector('.cd-label').textContent='⏳ 首發優惠已截止，現為 NT$ 20,000';clearInterval(t);return;}
+      if(d<=0){h.textContent='00';m.textContent='00';s.textContent='00';box.querySelector('.cd-label').textContent='⏳ 首發優惠已截止';var dp=document.getElementById('deal-price');if(dp)dp.textContent='NT$ 20,000';var dl=document.getElementById('deal-label');if(dl)dl.textContent='目前售價';var up=document.getElementById('urg-price');if(up)up.textContent='售價 NT$ 20,000';var un=document.getElementById('urg-note');if(un)un.textContent='首發優惠已截止';clearInterval(t);return;}
       h.textContent=pad(Math.floor(d/3.6e6));
       m.textContent=pad(Math.floor(d%3.6e6/6e4));
       s.textContent=pad(Math.floor(d%6e4/1e3));
